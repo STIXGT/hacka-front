@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -23,14 +23,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { XCircle, UserPlus, ArrowRight } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
@@ -72,6 +64,9 @@ export function ProfileForm() {
     },
   });
 
+  // Manejar el envío de un nuevo sender
+  async function handleAddSender() {}
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     if (dataSender.length < 3) {
       setDataSender([...dataSender, values]);
@@ -97,7 +92,7 @@ export function ProfileForm() {
     setDataSender(dataSender.filter((_, index) => index !== indexToRemove));
   }
 
-  function handleNextPage() {
+  async function handleNextPage() {
     if (dataSender.length === 0) {
       toast({
         variant: "destructive",
@@ -105,6 +100,9 @@ export function ProfileForm() {
         description: "Debes agregar al menos un remitente.",
       });
     } else {
+      handleAddSender();
+      // Insertar remitentes en la base de datos
+
       toast({
         variant: "success",
         title: "Éxito",
