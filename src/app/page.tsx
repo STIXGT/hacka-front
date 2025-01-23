@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <h1>HackaFront</h1>
-      <a href="/register-provider">register provedor</a>
+      <a href="/dashboard/register-sender">register provedor</a>
     </>
   );
 }
