@@ -52,7 +52,7 @@ export default function SignInForm() {
         description: "Inicio de sesión exitoso.",
       });
       setTimeout(() => {
-        router.push("/");
+        router.push("/dashboard");
       }, 1500);
     } catch (error) {
       toast({

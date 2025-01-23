@@ -53,7 +53,7 @@ export default function SingUpForm() {
       });
 
       setTimeout(() => {
-        router.push("/");
+        router.push("/sign-in");
       }, 1500);
     } catch (error) {
       toast({
